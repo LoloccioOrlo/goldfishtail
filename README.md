@@ -1,5 +1,5 @@
 # goldfishtail
-Command to Make URL for Your Deck Registoration Sheet from MTGGoldfish's Deck ID
+Command to Generate the URL for Download Your Deck Registoration Sheet from MTGGoldfish's Deck ID
 
 ## About
 ``goldfishtail`` is the command to generate the url to make your deck registoration sheet using https://www.decklist.org
