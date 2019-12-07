@@ -5,8 +5,9 @@ Command to Generate the URL for Download Your Deck Registoration Sheet from MTGG
 ``goldfishtail`` is the command to generate the url to make your deck registoration sheet using https://www.decklist.org
 from https://www.mtggoldfish/ 's deck lists.
 
-The name ``goldfishtail`` comes with word's "cow's tail" and same meaning of Japanese ideom "Kingyo-no fun" --
-"Goldfish dung" in iterally meaning.
+The name ``goldfishtail`` comes from words "cow's tail" and
+Japanese ideom "Kingyo-no fun" --
+"Goldfish dung" in iterally meaning -- these have the same meaning.
 
 ## Quick Guide
 1. ``goldfishtail init`` and answer the questions.
