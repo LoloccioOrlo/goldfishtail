@@ -83,18 +83,18 @@ fetch_deck_info () {
 
 # arg: deckid
 fetch_deck_list () {
-	local id url
+	local id url page
 	id=$1
 	url="${MTGGOLDFISHDOWNLOAD}${id}"
 
-	page=$(curl -s "$url" | sed "s/\r$//g")
+	page=$(curl -s "$url" | tr -d '\r')
 	if [ $? != "0" ]; then
 		echo "[Error] Cannot Access ${url}" >&2
 		exit 1
 	fi
 
-	DECKMAIN=$(echo "$page" | sed -n "0,/^$/p" | sed "s/^$//g")
-	DECKSIDE=$(echo "$page" | sed -n "/^$/,//p" | sed "s/^$//g")
+	DECKMAIN=$(echo "$page" | sed -n '1,/^$/p' | sed -n '/^$/!p')
+	DECKSIDE=$(echo "$page" | sed -n '/^$/,$p' | sed -n '/^$/!p')
 	if [ -z "$DECKMAIN" ]; then
 		echo "[Error] Cannot Get Decklist from ${url}" >&2
 		exit 1
