@@ -77,7 +77,7 @@ fetch_deck_info () {
 	DECKNAME=$(echo "$info" | sed -n "2,2p")
 	DECKDESIGNER=$(echo "$info"| sed -n "s/<span\ class='deck-view-author'>by //gp" | sed "s/<\/span>//")
 	if [ -z "$DECKNAME" ] || [ -z "$DECKDESIGNER" ]; then
-		echo "[Error] Cannot Get Deck-Name and/or Deck-Designer" >&2
+		echo "[Error] Cannot Get Deck-Name and/or Deck-Designer from ${url}" >&2
 	fi
 }
 
@@ -89,14 +89,14 @@ fetch_deck_list () {
 
 	page=$(curl -s "$url" | sed "s/\r$//g")
 	if [ $? != "0" ]; then
-		echo "[Error] Cannot Access ${URL}" >&2
+		echo "[Error] Cannot Access ${url}" >&2
 		exit 1
 	fi
 
 	DECKMAIN=$(echo "$page" | sed -n "0,/^$/p" | sed "s/^$//g")
 	DECKSIDE=$(echo "$page" | sed -n "/^$/,//p" | sed "s/^$//g")
 	if [ -z "$DECKMAIN" ]; then
-		echo "[Error] Cannot Get Decklist" >&2
+		echo "[Error] Cannot Get Decklist from ${url}" >&2
 		exit 1
 	fi
 }
